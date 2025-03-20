@@ -2,3 +2,4 @@
 .env
 .envrc
 memory.txt
+__pycache__/
