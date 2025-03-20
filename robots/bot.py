@@ -31,7 +31,25 @@ class Chatbot:
             # Create the file if it doesn't exist
             with open("memory.txt", "w") as f:
                 pass
+
+        user_info = ""
+        try:
+            with open("user_info.md", "r") as f:
+                user_info = f.read()
+        except FileNotFoundError:
+            # Create the file if it doesn't exist
+            with open("user_info.md", "w") as f:
+                pass
         
+        history = ""
+        try:
+            with open("history.txt", "r") as f:
+                history = f.read()
+        except FileNotFoundError:
+            # Create the file if it doesn't exist
+            with open("history.txt", "w") as f:
+                pass
+
         self.messages.append({
             "role": "user",
             "content": f"""
@@ -46,6 +64,14 @@ You can use the information to make investment recommendations or answer user qu
 <memory>
 {memory_content}
 </memory>
+
+<user_info>
+{user_info}
+</user_info>
+
+<history>
+{history}
+</history>
 
 <capabilities>
 You have access to real-time stock market data through yfinance. 
